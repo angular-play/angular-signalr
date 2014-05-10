@@ -1,0 +1,123 @@
+body {
+  font-size: 90%;
+  padding: 30px;
+/*   background-image: url(../images/bg.jpg); */
+  background-color: #3d464d;
+
+   -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.jw-body {
+/*   background-color: lightblue; */
+/*   background-image: url(../images/bg.jpg); */
+  background-color: white;
+
+  padding: 10px;
+  min-height: 500px;
+}
+
+
+@-moz-keyframes icon-loading {
+  from {
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes icon-loading {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-ms-keyframes icon-loading {
+  from {
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+
+.jw-table {
+  padding-top: 20px;
+}
+
+.ui.table.segment {
+  border-radius: 0px;
+}
+
+.ui.tiered.menu {
+  border-radius:0px;
+}
+
+div.ui.menu {
+  opacity: 1;
+}
+
+div.input > input[type="text"] {
+  border-radius:0px;
+}
+
+tr > th:nth-child(1),td:nth-child(1){
+  border: 1px sold gray;
+  background-color: lightgray;
+}
+
+td:nth-last-child(1)::after {
+  content: '';
+  display: inline;
+  color:green;
+  width: 50px;
+}
+
+td {
+  white-space: pre;
+}
+
+td[ng-value="5"] {
+  background-color:green;
+  color:white;
+  transition: all .8s ease-in-out;
+}
+
+td[ng-value]:not([ng-value="5"]) > span:before{
+  font-family: Icons;
+  content: "\f110";
+  padding-right:5px;
+
+  animation: icon-loading 2s linear infinite;
+  -webkit-animation: icon-loading 2s linear infinite;
+  transition: all .8s ease-in-out;
+  -webkit-backface-visibility: hidden;
+  transition-property: all;
+}
+
+td[ng-value]:not([ng-value="5"]) {
+  background-color:orange;
+  transition: all .8s ease-in-out;
+}
+
+table {
+  box-shadow:1px 1px 5px gray;
+}
+
+
+a:link, a:visited {
+  color: black;
+  text-decoration: none;
+}
