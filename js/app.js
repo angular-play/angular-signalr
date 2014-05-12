@@ -14,11 +14,7 @@ var app = angular.module("UMApplication", ["ngQuickDate"]);
 * @inject {$scope}
 * @inject {um}
 */
-app.controller("MainController", function ($scope, $location) {
-
-  $scope.$on("tab", function(event, tab) {
-    $scope.currentTab = tab;
-  });
+app.controller("MainController", function ($scope, $location, um) {
 
   $scope.searchOptions = {};
   $scope.searchOptions.createDate = new Date();
@@ -26,7 +22,7 @@ app.controller("MainController", function ($scope, $location) {
 
   $scope.setTab = function(tab) {
     $scope.currentTab = tab;
-    console.log(tab);
+    reload(tab);
   }
 
   $scope.getTab = function() {
@@ -37,5 +33,37 @@ app.controller("MainController", function ($scope, $location) {
     return $scope.currentTab == tab;
   }
 
-});
+  function reload(info) {
+    console.log("reload::" + info);
+    $scope.$broadcast("clear", true);
 
+    var server = $scope.server;
+    if(info == "nodb") server.getNoDBInfo();
+    else if(info == "pending") server.getPendingInfo();
+    else if(info == "complete") server.getCompleteInfo();
+  }
+
+  function start() {
+
+    var service = new um.Service();
+    var tnt = service.getTntService();
+    var connection = service.getConnection();
+    var server = tnt.server;
+    var start = connection.hub.start();
+
+    start.done(function() {
+      console.log("start done...");
+      tnt.server.getPendingInfo();
+      tnt.server.getCompleteInfo();
+      tnt.server.getNoDBInfo();
+    });
+
+    start.fail(function(){
+      console.error("start failed...");
+    });
+
+    $scope.server = server;
+  }
+
+  start();
+});

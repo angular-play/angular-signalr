@@ -1,7 +1,10 @@
 
-app.controller("PendingController", function($scope, um, $timeout){
+app.controller("PendingController", function($scope, um, $timeout, update){
 
-  var status = "LocalUploadSuccess";
+  $scope.$on("clear", function(event, data) {
+    $scope.records =[];
+//     $scope.$apply();
+  });
 
   function apply() {
     $timeout(function() {
@@ -16,25 +19,15 @@ app.controller("PendingController", function($scope, um, $timeout){
 
     tnt.client.receivePendingInfo = function(data) {
       data.forEach(function(record) {
-
-        if(record.Status == status) {
-          record.JwCreateDate = new Date(record.CreateDate);
-          record.JwUploadDate = new Date(record.UploadDate);
-          $scope.records.push(record);
-        }
+        record.JwCreateDate = new Date(record.CreateDate);
+        record.JwUploadDate = new Date(record.UploadDate);
+        update.applyChange($scope, record, 1000);
       });
-
       apply();
     }
-
-    connection.hub.start().done(function() {
-      tnt.server.getPendingInfo();
-      tnt.server.getInfoByStatus("MatchMainDBFailed");
-    });
   }
 
   $scope.records = [];
   start();
-
 
 });

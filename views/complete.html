@@ -1,0 +1,37 @@
+<div class="jw-table">
+    <table class="ui mini table segment collapsing">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>
+                    <i class="ui time icon"></i>  Create
+                </th>
+                <th>Template</th>
+                <th>Connote</th>
+                <th>Status</th>
+                <th><i class="ui user icon"></i>Scan</th>
+
+                <th>Local A</th>
+                <th>Local B</th>
+                <th>ECM</th>
+                <th> <i class="ui time icon"></i> Upload</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="info in records" class="">
+                <td class="animated fadeIn">{{$index+1}}</td>
+                <td>{{info.JwCreateDate | date:"yyyy/MM/dd HH:mm:ss"}}</td>
+                <td>{{info.Template}}</td>
+                <td>{{info.MainInfo.ConNumber}}</td>
+                <td ng-value="{{info.Status}}" class=""><span>{{info.Status}}<span></td>
+                <td>{{info.AuthenUser}}</td>
+
+                <td> <i class="ui ok circle icon" jw-value="{{info.Services[0].Status}}" ng-class="{ green: info.Services[0].Status == 1 }"></i></td>
+                <td> <i class="ui ok circle icon" jw-value="{{info.Services[1].Status}}" ng-class="{ green: info.Services[1].Status == 1 }"></i></td>
+                <td> <i class="ui ok circle icon" ng-class="{ green: info.Status == 'UploadSuccess' }"></i>  </td>
+                <td>{{info.JwUploadDate | date:"yyyy/MM/dd HH:mm:ss" }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

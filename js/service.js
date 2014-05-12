@@ -1,4 +1,54 @@
+app.factory("update", function($timeout){
 
+  function applyChange($scope, record, limit) {
+
+    function apply() {
+      $timeout(function(){
+        $scope.$apply();
+      }, 200);
+    }
+
+    function newRecord(info) {
+      $scope.records.insert(0, info);
+      appendDate(info);
+      apply();
+    }
+
+    function updateRecord(info) {
+
+      var length = $scope.records.length;
+
+      if(length >= limit) {
+        var diff = length - limit;
+        diff++;
+        $scope.records.splice(-diff, diff)
+      }
+
+      var record = _.find($scope.records, { UUID: info.UUID });
+      if(record) {
+        record.Status = info.Status;
+        record.UpdateDate = info.UpdateDate;
+        appendDate(info);
+        apply();
+      }else {
+        newRecord(info);
+      }
+    }
+
+    function appendDate(info) {
+      info.JwCreateDate = new Date(info.CreateDate);
+      info.JwUploadDate = new Date(info.UploadDate);
+    }
+
+    updateRecord(record);
+
+  }
+
+  return {
+    applyChange: applyChange
+  };
+
+});
 /*
 * Angular "um" factory
 * @factory
