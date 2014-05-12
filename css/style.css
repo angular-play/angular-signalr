@@ -90,7 +90,7 @@ td {
   white-space: pre;
 }
 
-td[ng-value]:not([ng-value="UploadSuccess"]) > span:before{
+x > td[ng-value]:not([ng-value="UploadSuccess"]) > span:before{
   font-family: Icons;
   content: "\f110";
   padding-right:5px;
@@ -99,6 +99,10 @@ td[ng-value]:not([ng-value="UploadSuccess"]) > span:before{
   transition: all .8s ease-in-out;
   -webkit-backface-visibility: hidden;
   transition-property: all;
+}
+
+td[ng-value] {
+  background-color: lightgray;
 }
 
 td[ng-value$="Failed"] {
@@ -122,3 +126,21 @@ a:link, a:visited {
 .ui.secondary.menu > .item {
   border-radius: 0;
 }
+
+div[ng-show] {
+}
+
+.jw-view {
+/*   position: relative; */
+/*   position: fixed; */
+  padding: 20px;
+}
+
+.load-container {
+/*   position: relative; */
+  position: absolute;
+  top: 25%;
+  left: 25%;
+}
+
+
