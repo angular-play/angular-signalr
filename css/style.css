@@ -16,7 +16,8 @@ body {
   background-color: white;
 
   padding: 10px;
-  min-height: 500px;
+  min-height: 700px;
+  max-width: 1000px;
 }
 
 
@@ -89,17 +90,10 @@ td {
   white-space: pre;
 }
 
-td[ng-value="5"] {
-  background-color:green;
-  color:white;
-  transition: all .8s ease-in-out;
-}
-
-td[ng-value]:not([ng-value="5"]) > span:before{
+td[ng-value]:not([ng-value="UploadSuccess"]) > span:before{
   font-family: Icons;
   content: "\f110";
   padding-right:5px;
-
   animation: icon-loading 2s linear infinite;
   -webkit-animation: icon-loading 2s linear infinite;
   transition: all .8s ease-in-out;
@@ -107,17 +101,24 @@ td[ng-value]:not([ng-value="5"]) > span:before{
   transition-property: all;
 }
 
-td[ng-value]:not([ng-value="5"]) {
+td[ng-value$="Failed"] {
   background-color:orange;
-  transition: all .8s ease-in-out;
+}
+
+td[ng-value$="Success"] {
+  background-color:green;
+  color:white;
 }
 
 table {
   box-shadow:1px 1px 5px gray;
 }
 
-
 a:link, a:visited {
   color: black;
   text-decoration: none;
+}
+
+.ui.secondary.menu > .item {
+  border-radius: 0;
 }

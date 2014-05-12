@@ -14,6 +14,16 @@ app.controller("StatusController", function($scope, um, $timeout){
   }
 
   function updateRecord(info) {
+
+    var limit = 100;
+    var length = $scope.records.length;
+
+    if(length >= limit) {
+      var diff = length - limit;
+      diff++;
+      $scope.records.splice(-diff, diff)
+    }
+
     var record = _.find($scope.records, { UUID: info.UUID });
     if(record) {
       record.Status = info.Status;
@@ -33,8 +43,12 @@ app.controller("StatusController", function($scope, um, $timeout){
   function registerService($scope) {
 
     function callback(status, data) {
+
+      //console.log(data);
+
       if(status == "new") {
-        newRecord(data);
+        //newRecord(data);
+        updateRecord(data);
       }else if(status == "update") {
         updateRecord(data);
       }

@@ -1,15 +1,11 @@
 app.controller("NoDbController", function($scope, um, $timeout, $location, $rootScope){
 
-  $rootScope.$emit("tab", "nodb");
+  var status = "MatchMainDBFailed";
 
   function apply() {
     $timeout(function() {
       $scope.$apply();
     }, 200);
-  }
-
-  function getNoDbRecords(service) {
-    service.server.getInfoByStatus("UploadSuccess");
   }
 
   function start() {
@@ -19,17 +15,18 @@ app.controller("NoDbController", function($scope, um, $timeout, $location, $root
 
     tnt.client.receiveInfoByStatus = function(data) {
       data.forEach(function(record) {
-        record.JwCreateDate = new Date(record.CreateDate);
-        record.JwUploadDate = new Date(record.UploadDate);
-        $scope.records.push(record);
+        if(record.Status == status) {
+          record.JwCreateDate = new Date(record.CreateDate);
+          record.JwUploadDate = new Date(record.UploadDate);
+          $scope.records.push(record);
+        }
       });
-
       apply();
     }
 
-    connection.hub.start().done(function() {
-      tnt.server.getInfoByStatus("UploadSuccess");
-    });
+//     connection.hub.start().done(function() {
+//       tnt.server.getInfoByStatus(status);
+//     });
   }
 
   start();

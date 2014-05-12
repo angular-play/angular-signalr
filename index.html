@@ -26,7 +26,7 @@
             <div ng-include src="'/views/control.html'"></div>
 <!--             <div ui-view></div> -->
             <div ng-show="getTab() == 'status'" ng-controller="StatusController" ng-include src="'/views/status.html'"></div>
-            <div ng-show="getTab() == 'padding'" ng-controller="PendingController" ng-include src="'/views/pending.html'"></div>
+            <div ng-show="getTab() == 'pending'" ng-controller="PendingController" ng-include src="'/views/pending.html'"></div>
             <div ng-show="getTab() == 'nodb'" ng-controller="NoDbController" ng-include src="'/views/nodb.html'"></div>
         </div>
     </body>

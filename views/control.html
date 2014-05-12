@@ -1,21 +1,26 @@
 <div class="jw-control">
     <div class="ui secondary menu">
-        <a href="/#status" class="item" ui-sref="status" ng-click="setTab('status')" ng-class="{ active: isTab('status') }">
+        <a href="#/status" class="item" ui-sref="status" ng-click="setTab('status')" ng-class="{ active: isTab('status') }">
             <i class="payment icon"></i> Upload Manager
         </a>
 
-        <a href="/#pedding" class="item" ui-sref="pedding" ng-click="setTab('pedding')" ng-class="{ active: isTab('pedding') }">
+        <a href="#/pending" class="item" ui-sref="pending" ng-click="setTab('pending')" ng-class="{ active: isTab('pending') }">
             <i class="external url sign icon"></i> ECM Pending
         </a>
 
-        <a href="/#nodb" class="item" ui-sref="nodb" ng-click="setTab('nodb')" ng-class="{ active: isTab('nodb') }">
+        <a href="#/nodb" class="item" ui-sref="nodb" ng-click="setTab('nodb')" ng-class="{ active: isTab('nodb') }">
             <i class="warning icon"></i> Not Match DB
         </a>
 
-        <a href="" class="item">
+        <a href="#/complete" class="item" ui-sref="nodb" ng-click="setTab('complete')" ng-class="{ active: isTab('complete') }">
+            <i class="warning icon"></i> Complete
+        </a>
+
+        <a href="" class="item" ng-if="false">
             <i class="ui time icon"></i>
             <quick-datepicker disable-timepicker="true" ng-model='searchOptions.createDate' date-format="dd/MM/yyyy"></quick-datepicker>
         </a>
+
 
         <div class="right menu" ng-if="false">
             <div class="item">
