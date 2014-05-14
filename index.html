@@ -14,7 +14,7 @@
             <div class="jw-view">
                 <div ng-include src="'/views/control.html'"></div>
 
-                <div class="load-container">
+                <div class="load-container" ng-if="false">
                     <div class="loader"></div>
                 </div>
 
@@ -30,7 +30,9 @@
         <script src="vendors/lodash/lodash.js"></script>
         <script src="vendors/jquery/jquery-1.11.1.js"></script>
         <script src="vendors/signalr/jquery.signalR-2.0.3.js"></script>
+
         <script src="http://10.0.0.229:8877/signalr/hubs"></script>
+
         <script src="vendors/angular/angular.js"></script>
 <!--         <script src="vendors/angular/angular-ui-router.js"></script> -->
         <script src="vendors/ngQuickDate/ng-quick-date.js"></script>

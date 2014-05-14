@@ -58,6 +58,7 @@ app.factory("update", function($timeout){
 app.factory("um", function($http){
 
   var url = "http://10.0.0.229:8877/signalr/hubs";
+
   var options = { transport: "longPolling", xdomin: true };
   var connection = $.connection;
   connection.hub.url = url;
