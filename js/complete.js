@@ -16,15 +16,13 @@ app.controller("CompleteController", function($scope, um, update, $timeout){
     var tnt = service.getTntService();
     var connection = service.getConnection();
 
-    tnt.client.receiveComleteInfo = function(data) {
+    //tnt.client.receiveCompleteInfo
+    tnt.client.receiveCompleteInfo = function(data) {
 
       data.forEach(function(record) {
-
-        if(record.Status == status) {
-          record.JwCreateDate = new Date(record.CreateDate);
-          record.JwUploadDate = new Date(record.UploadDate);
-          update.applyChange($scope, record, 1000);
-        }
+        record.JwCreateDate = new Date(record.CreateDate);
+        record.JwUploadDate = new Date(record.UploadDate);
+        update.applyChange($scope, record, 1000);
       });
       apply();
     }
